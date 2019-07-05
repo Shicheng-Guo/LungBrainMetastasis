@@ -1,7 +1,7 @@
 install.packages("BiocManager")
 BiocManager::install("maftools")
 
-setwd("D:\\LungBrain")
+setwd("/home/shg047/work/LungBrainMetastasis/vcf")
 laml<-annovarToMaf(annovar="T1.hg19_multianno.txt", Center = NULL, refBuild = "hg19",
              tsbCol = NULL, table = "refGene", basename = NULL, sep = "\t",
              MAFobj = F, sampleAnno = NULL)
