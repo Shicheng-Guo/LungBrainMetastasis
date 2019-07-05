@@ -1,4 +1,8 @@
+install.packages("BiocManager")
+BiocManager::install("maftools")
+BiocManager::install("digest")
 library("maftools")
+
 setwd("~/hpc/project/LungBrainMetastasis/vcf/annovar")
 annovar<-list.files(pattern="*.T1.hg19_multianno.txt")
 laml<-annovarToMaf(annovar=annovar, Center = NULL, refBuild = "hg19",
