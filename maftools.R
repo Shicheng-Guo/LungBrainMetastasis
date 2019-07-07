@@ -3,6 +3,7 @@
 # BiocManager::install("digest")
 library("maftools")
 library("callr")
+library("maftools")
 install.packages("callr")
 install.packages("processx")
 install.packages("processx_3.4.0.tar.gz")
@@ -116,4 +117,20 @@ tcga_luad_mc3
 tcga_lusc_mc3
 tcga_lgg_mc3
 tcga_gbm_mc3
+
+pdf("TCGA_luad.pdf")
+plotmafSummary(maf = tcga_luad_mc3, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+dev.off()
+
+pdf("TCGA_lusc.pdf")
+plotmafSummary(maf = tcga_lusc_mc3, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+dev.off()
+
+pdf("TCGA_lgg.pdf")
+plotmafSummary(maf = tcga_lgg_mc3, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+dev.off()
+
+pdf("TCGA_gbm.pdf")
+plotmafSummary(maf = tcga_gbm_mc3, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+dev.off()
 
