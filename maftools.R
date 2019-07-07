@@ -2,6 +2,12 @@
 # BiocManager::install("maftools")
 # BiocManager::install("digest")
 library("maftools")
+library("callr")
+install.packages("callr")
+install.packages("processx")
+install.packages("processx_3.4.0.tar.gz")
+devtools::install_github(repo = "PoisonAlien/TCGAmutations")
+
 
 setwd("~/hpc/project/LungBrainMetastasis/vcf/annovar")
 setwd("C:\\Users\\shg047\\Documents\\GitHub\\LungBrainMetastasis\\annovar")
@@ -96,4 +102,18 @@ forestPlot(mafCompareRes = pt.vs.rt, pVal = 0.5, color = c('royalblue', 'maroon'
 
 genes = c("KMT2C", "BAGE2", "ANKRD36C", "AHNAK2", "ADAMTSL4","MST1L","PRAMEF4","PDE4DIP","FLT3LG","DMBT1")
 coOncoplot(m1 = laml1, m2 = laml2, m1Name = 'Lung', m2Name = 'Brain', genes = genes, removeNonMutated = TRUE)
+
+devtools::install_github(repo = "PoisonAlien/TCGAmutations")
+
+library("TCGAmutations")
+
+tcga_load(study = "LUAD") 
+tcga_load(study = "LUSC") 
+tcga_load(study = "GBM") 
+tcga_load(study = "LGG") 
+
+tcga_luad_mc3
+tcga_lusc_mc3
+tcga_lgg_mc3
+tcga_gbm_mc3
 
