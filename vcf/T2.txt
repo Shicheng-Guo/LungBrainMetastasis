@@ -1,0 +1,11 @@
+A.T2.sort.vcf.gz
+C.T2.sort.vcf.gz
+E.T2.sort.vcf.gz
+F.T2.sort.vcf.gz
+G.T2.sort.vcf.gz
+H.T2.sort.vcf.gz
+I.T2.sort.vcf.gz
+J.T2.sort.vcf.gz
+K.T2.sort.vcf.gz
+M.T2.sort.vcf.gz
+O.T2.sort.vcf.gz
