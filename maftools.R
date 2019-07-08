@@ -14,6 +14,7 @@ library("BSgenome", quietly = TRUE)
 
 setwd("~/hpc/project/LungBrainMetastasis/vcf/annovar")
 setwd("C:\\Users\\shg047\\Documents\\GitHub\\LungBrainMetastasis\\annovar\\multianno")
+setwd("C:\\Users\\shg047\\Documents\\GitHub\\LungBrainMetastasis\\annovar")
 
 ### Lung
 annovar<-list.files(pattern="*_T1.hg19_multianno.txt")
@@ -27,7 +28,7 @@ pdf("Lung.pdf")
 plotmafSummary(maf = laml, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = T)
 dev.off()
 pdf("Lung-S1.pdf")
-oncoplot(maf = laml, top = 50,draw_titv = TRUE,fontSize = 0.8)
+oncoplot(maf = laml, top = 50, removeNonMutated=F,draw_titv = TRUE,fontSize = 0.4,showTumorSampleBarcodes=T)
 dev.off()
 pdf("Lung-S2.pdf")
 somaticInteractions(maf = laml, top = 25, pvalue = c(0.05, 0.1))
@@ -46,7 +47,7 @@ pdf("Brain.pdf")
 plotmafSummary(maf = laml, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 dev.off()
 pdf("Brain-S1.pdf")
-oncoplot(maf = laml, top = 50, draw_titv = TRUE,fontSize = 0.4)
+oncoplot(maf = laml, top = 50, removeNonMutated=F,draw_titv = TRUE,fontSize = 0.4,showTumorSampleBarcodes=T)
 dev.off()
 pdf("Brain-S2.pdf")
 somaticInteractions(maf = laml, top = 25, pvalue = c(0.05, 0.1))
@@ -59,15 +60,25 @@ laml<-annovarToMaf(annovar=annovar, Center = NULL, refBuild = "hg19",
                    MAFobj = T, sampleAnno = NULL)
 getSampleSummary(laml)
 getGeneSummary(laml)
-pdf("Lung_Brain.pdf")
+pdf("Lung_Brain-S1.pdf")
 plotmafSummary(maf = laml, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 dev.off()
-pdf("Lung_Brain-S1.pdf")
+pdf("Lung_Brain-S2.pdf")
 oncoplot(maf = laml, top = 50, sampleOrder=SO,removeNonMutated=F,draw_titv = TRUE,fontSize = 0.4,showTumorSampleBarcodes=T)
 dev.off()
-
-pdf("Lung_Brain-S2.pdf")
+pdf("Lung_Brain-S3.pdf")
 somaticInteractions(maf = laml, top = 25, pvalue = c(0.05, 0.1))
+dev.off()
+pdf("Lung_Brain-S4.pdf")
+oncoplot(maf = laml, top = 50, removeNonMutated=F,draw_titv = TRUE,fontSize = 0.4,showTumorSampleBarcodes=T)
+dev.off()
+
+pdf("KMT2C.pdf")
+lollipopPlot(maf = laml, gene = 'KMT2C', AACol = 'aaChange', showMutationRate = TRUE)
+lollipopPlot(maf = tcga_luad_mc3, gene = 'KMT2C', AACol = 'HGVSp_Short', showMutationRate = TRUE)
+lollipopPlot(maf = tcga_lusc_mc3, gene = 'KMT2C', AACol = 'HGVSp_Short', showMutationRate = TRUE)
+lollipopPlot(maf = tcga_lgg_mc3, gene = 'KMT2C', AACol = 'HGVSp_Short', showMutationRate = TRUE)
+lollipopPlot(maf = tcga_gbm_mc3, gene = 'KMT2C', AACol = 'HGVSp_Short', showMutationRate = TRUE)
 dev.off()
 
 
@@ -75,7 +86,6 @@ SO<-unlist(lapply(annovar,function(x) unlist(strsplit(x,"[.]"))[1]))
 oncoplot(maf = laml, top = 50, sampleOrder=SO,removeNonMutated=F,draw_titv = TRUE,fontSize = 0.4,showTumorSampleBarcodes=T)
 oncoplot(maf = laml, top = 50, draw_titv = TRUE,fontSize = 0.4)
 
-? oncoplot
 genes = c("KMT2C", "BAGE2", "ANKRD36C", "AHNAK2", "ADAMTSL4","MST1L","PRAMEF4","PDE4DIP","FLT3LG","DMBT1")
 coOncoplot(m1 = Lung, m2 = Brain, m1Name = 'Lung', m2Name = 'Brain', genes = genes, removeNonMutated = TRUE)
 
@@ -147,10 +157,7 @@ tcga_load(study = "LUSC")
 tcga_load(study = "GBM") 
 tcga_load(study = "LGG") 
 
-tcga_luad_mc3
-tcga_lusc_mc3
-tcga_lgg_mc3
-tcga_gbm_mc3
+
 
 pdf("TCGA_luad.pdf")
 plotmafSummary(maf = tcga_luad_mc3, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
