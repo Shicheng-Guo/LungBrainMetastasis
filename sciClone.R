@@ -95,3 +95,15 @@ sc.plot2d(sc,"results.new/clusters3.2d.pdf")
 sc.plot3d(sc, sc@sampleNames, size=700, outputFile="results.new/clusters3.3d.gif")
 
 
+#### LBMT
+v = read.table("vafs.dat",header=T);
+v1 = v[1:100,c(1,2,8,9,10)]
+names = c("Sample1","Sample2")
+sc = sciClone(vafs=list(v1,v2),sampleNames=names[1:2])
+sc.plot2d(sc,"results/clusters2.2d.pdf")
+
+
+
+
+
+
