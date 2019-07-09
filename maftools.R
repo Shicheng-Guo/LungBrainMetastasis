@@ -195,4 +195,7 @@ dev.off()
 library("ggplot2")
 library("sigfit")
 library("devtools")
+install.packages("https://cran.rstudio.com/bin/windows/contrib/3.6/processx_3.3.1.zip", repos = NULL)
+install.packages("https://cran.rstudio.com/bin/windows/contrib/3.6/callr_3.2.0.zip", repos = NULL)
+
 install_github("kgori/sigfit", args = "--preclean", build_vignettes = TRUE)
