@@ -9,7 +9,6 @@ install.packages("processx")
 install.packages("processx_3.4.0.tar.gz")
 devtools::install_github(repo = "PoisonAlien/TCGAmutations")
 BiocManager::install("BSgenome")
-library("BSgenome", quietly = TRUE)
 
 
 setwd("~/hpc/project/LungBrainMetastasis/vcf/annovar")
@@ -99,14 +98,14 @@ library(BSgenome.Hsapiens.UCSC.hg19, quietly = TRUE)
 
 library('pheatmap')
 
-laml.tnm= trinucleotideMatrix(maf = Lung, prefix = 'chr', add = TRUE, ref_genome = "BSgenome.Hsapiens.UCSC.hg19")
-laml.sign = extractSignatures(mat = laml.tnm, nTry = 6, plotBestFitRes = FALSE)
-plotSignatures(laml.sign, title_size = 0.8, )
+laml.tnm= trinucleotideMatrix(maf = Lung, add = TRUE, ref_genome = "BSgenome.Hsapiens.UCSC.hg19")
+laml.sign = extractSignatures(mat = laml.tnm, nTry = 26, plotBestFitRes = T)
+plotSignatures(laml.sign, title_size = 0.8)
 pheatmap::pheatmap(mat = laml.sign$coSineSimMat, cluster_rows = FALSE, main = "cosine similarity against validated signatures")
 laml.se = signatureEnrichment(maf = laml, sig_res = laml.sign)
 
 
-
+library("pkgmaker")
 
 annovar<-list.files(pattern="*.T*.hg19_multianno.txt")
 laml<-annovarToMaf(annovar=annovar, Center = NULL, refBuild = "hg19",
@@ -124,6 +123,7 @@ somaticInteractions(maf = laml, top = 25, pvalue = c(0.05, 0.1))
 laml.sig = oncodrive(maf = laml, AACol = 'aaChange', minMut = 5, pvalMethod = 'zscore')
 laml.sig
 write.table(laml.sig,file="oncodrive.txt",sep="\t",col.names = NA,row.names = T,quote=F)
+
 plotOncodrive(res = laml.sig, fdrCutOff = 0.1, useFraction = TRUE)
 lollipopPlot(maf = laml, gene = 'FRG1', AACol = 'aaChange', showMutationRate = TRUE)
 lollipopPlot(maf = laml, gene = 'AHNAK2', AACol = 'aaChange', showMutationRate = TRUE)
@@ -145,8 +145,8 @@ laml2<-annovarToMaf(annovar=annovar, Center = NULL, refBuild = "hg19",
 pt.vs.rt <- mafCompare(m1 = laml1, m2 = laml2, m1Name = 'Primary', m2Name = 'Relapse', minMut = 2)
 forestPlot(mafCompareRes = pt.vs.rt, pVal = 0.5, color = c('royalblue', 'maroon'), geneFontSize = 0.4)
 
-genes = c("KMT2C", "BAGE2", "ANKRD36C", "AHNAK2", "ADAMTSL4","MST1L","PRAMEF4","PDE4DIP","FLT3LG","DMBT1")
-coOncoplot(m1 = laml1, m2 = laml2, m1Name = 'Lung', m2Name = 'Brain', genes = genes, removeNonMutated = TRUE)
+genes = c("KMT2C", "BAGE2", "ANKRD36C", "AHNAK2", "ADAMTSL4","MST1L","PRAMEF4","PDE4DIP","FLT3LG","DMBT1","ERF")
+coOncoplot(m1 = Lung, m2 = Brain, m1Name = 'Lung', m2Name = 'Brain', genes = genes, removeNonMutated = TRUE)
 
 devtools::install_github(repo = "PoisonAlien/TCGAmutations")
 
@@ -156,7 +156,6 @@ tcga_load(study = "LUAD")
 tcga_load(study = "LUSC") 
 tcga_load(study = "GBM") 
 tcga_load(study = "LGG") 
-
 
 
 pdf("TCGA_luad.pdf")
@@ -174,4 +173,12 @@ dev.off()
 pdf("TCGA_gbm.pdf")
 plotmafSummary(maf = tcga_gbm_mc3, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 dev.off()
+
+
+
+library("ggplot2")
+
+
+
+
 
