@@ -1,0 +1,13 @@
+Sample	Somatic_Mutation_Prevalence	Number_of_Samples
+A.T2.vcf	6.5	12
+B.T2.vcf	1.9	12
+C.T2.vcf	4.5	12
+E.T2.vcf	8.7	12
+F.T2.vcf	2	12
+G.T2.vcf	2.4	12
+H.T2.vcf	10.7	12
+I.T2.vcf	15	12
+J.T2.vcf	7.9	12
+K.T2.vcf	12.4	12
+M.T2.vcf	4.8	12
+O.T2.vcf	3.2	12

@@ -1,0 +1,31 @@
+Signature	Proposed_Etiology	A.T1.vcf	B.T1.vcf	C.T1.vcf	E.T1.vcf	F.T1.vcf	G.T1.vcf	H.T1.vcf	I.T1.vcf	J.T1.vcf	K.T1.vcf	M.T1.vcf	O.T1.vcf
+1	Age	0	0.082	0.115	0.057	0	0.38	0	0.009	0.255	0.094	0.221	0.31
+2	APOBEC	0	0	0	0.041	0	0	0.015	0.061	0	0.093	0.034	0.036
+3	BRCA1 / BRCA2 (failure of DNA DSBR / large INDELs)	0.397	0.203	0.258	0	0.359	0.123	0	0	0.196	0.041	0	0.204
+4	Smoking	0	0	0	0.039	0	0.011	0.784	0.691	0	0	0	0
+5	Unknown (all cancer types)	0	0	0	0	0	0	0	0	0	0.249	0.052	0
+6	Defective DNA MMR / MSI (small INDELs)	0	0.091	0	0	0	0.121	0.107	0.007	0	0	0.161	0
+7	UV light	0	0.205	0	0.051	0	0.035	0.028	0	0.018	0.021	0	0
+8	Unknown (breast cancer and medulloblastoma)	0	0	0	0	0	0	0	0	0	0.019	0	0
+9	POLH (CLL, BCL)	0	0	0.013	0	0.007	0	0	0	0	0	0.007	0
+10	POLE (ultra-hypermutation)	0	0.007	0	0	0	0.036	0	0	0	0	0	0
+11	Alkylating agents	0	0	0	0.135	0.048	0	0	0.004	0	0	0	0.013
+12	Unknown (liver cancer)	0	0	0.179	0	0.355	0.111	0.006	0.084	0.026	0	0.189	0.063
+13	APOBEC	0	0.238	0.217	0.007	0.076	0.013	0.018	0.042	0.111	0.003	0.047	0.049
+14	Unknown (uterine cancer and glioma / hypermutation)	0	0	0	0	0	0	0	0	0	0	0	0
+15	Defective DNA MMR (small INDELs)	0.012	0	0	0	0.144	0	0	0	0	0	0.11	0
+16	Unknown (liver cancer)	0.043	0	0	0	0	0	0	0	0	0.128	0.138	0
+17	Unknown (different cancers)	0.081	0.046	0.002	0	0	0.031	0	0.003	0.009	0	0	0
+18	Unknown (different cancers)	0	0	0	0	0	0	0	0	0.031	0.036	0.02	0
+19	Unknown (pilocytic astrocytoma)	0.049	0	0	0.354	0	0	0	0	0.041	0.173	0	0
+20	Defective DNA MMR (small INDELs)	0	0	0.024	0	0	0	0.042	0.083	0	0	0	0.03
+21	Unknown (stomach cancer / MSI)	0.339	0	0	0	0	0.082	0	0	0.032	0.01	0	0.159
+22	Aristolochic acid	0.006	0	0	0.017	0	0	0	0	0.053	0	0	0.064
+23	Unknown (liver cancer)	0.01	0	0	0	0.011	0	0	0	0.09	0.133	0	0.073
+24	Aflatoxin	0	0	0	0	0	0	0	0	0	0	0	0
+25	Unknown (Hodgkin lymphoma)	0	0	0	0.016	0	0	0	0	0	0	0	0
+26	Defective DNA MMR (small INDELs)	0	0.123	0.189	0	0	0	0	0	0	0	0	0
+27	Unknown (kidney clear cell carcinomas / small INDELs)	0	0	0	0.008	0	0.021	0	0	0	0	0.021	0
+28	Unknown (stomach cancer)	0.062	0.004	0.002	0	0	0	0	0.015	0.01	0	0	0
+29	Tobacco chewing	0	0	0	0	0	0.037	0	0	0.128	0	0	0
+30	Unknown (breast cancer)	0	0	0	0.277	0	0	0	0	0	0	0	0
