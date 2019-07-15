@@ -1,0 +1,11 @@
+      Pathway  N n_affected_genes fraction_affected
+ 1:    RTK-RAS 85               10        0.11764706
+ 2:      NOTCH 71                8        0.11267606
+ 3:        WNT 68                6        0.08823529
+ 4:      Hippo 38                5        0.13157895
+ 5:       PI3K 29                2        0.06896552
+ 6:       NRF2  3                1        0.33333333
+ 7:       TP53  6                1        0.16666667
+ 8:   TGF-Beta  7                1        0.14285714
+ 9:        MYC 13                1        0.07692308
+10: Cell_Cycle 15                1        0.06666667

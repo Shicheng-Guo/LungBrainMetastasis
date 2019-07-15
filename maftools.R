@@ -98,10 +98,21 @@ oncoplot(maf = laml, top = 50, draw_titv = TRUE,fontSize = 0.4)
 genes = c("KMT2C", "BAGE2", "ANKRD36C", "AHNAK2", "ADAMTSL4","MST1L","PRAMEF4","PDE4DIP","FLT3LG","DMBT1")
 coOncoplot(m1 = Lung, m2 = Brain, m1Name = 'Lung', m2Name = 'Brain', genes = genes, removeNonMutated = TRUE)
 
-pdf("Figure.PathwayEnrichment.pdf")
+pdf("Figure.PathwayEnrichment.lung.pdf")
 OncogenicPathways(maf = Lung)
+dev.off()
+pdf("Figure.PathwayEnrichment.brain.pdf")
 OncogenicPathways(maf = Brain)
 dev.off()
+pdf("Figure.PathwayEnrichment.lung.and.brain.pdf")
+OncogenicPathways(maf = laml)
+dev.off()
+
+geneCloud(input = Lung, minMut = 3)
+geneCloud(input = Brain, minMut = 3)
+geneCloud(input = laml, minMut = 4)
+
+
 
 het = inferHeterogeneity(maf = Lung)
 getSampleSummary(Lung)

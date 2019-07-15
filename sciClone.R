@@ -22,6 +22,7 @@ library(sciClone)
 # wget https://raw.githubusercontent.com/genome/sciclone-meta/master/tests/data/vafs.dat
 # wget https://raw.githubusercontent.com/genome/sciclone-meta/master/tests/shortTest.R
 
+
 library(sciClone)
 
 setwd("C:/Users/shg047/Documents/GitHub/LungBrainMetastasis/annovar")
@@ -96,6 +97,7 @@ sc.plot3d(sc, sc@sampleNames, size=700, outputFile="results.new/clusters3.3d.gif
 
 
 #### LBMT
+
 v = read.table("vafs.dat",header=T);
 v1 = v[1:100,c(1,2,8,9,10)]
 names = c("Sample1","Sample2")
@@ -103,8 +105,10 @@ sc = sciClone(vafs=list(v1,v2),sampleNames=names[1:2])
 sc.plot2d(sc,"results/clusters2.2d.pdf")
 
 
-
+setwd("C:/Users/shg047/Documents/GitHub/LungBrainMetastasis/vaf")
 FF<-c("A","B","C","E","F","G","H","I","J","K","M","O")
+
+ff = FF[1]
 for(ff in FF){
   f1<-paste("001",ff,"_Tumor1.vafs",sep="")
   f2<-paste("001",ff,"_Tumor2.vafs",sep="")
@@ -114,11 +118,9 @@ for(ff in FF){
   v2 = read.table(f2,header=F)
   v1 = v1[,c(1,2,10)]
   v2 = v2[,c(1,2,10)]
-  
-  
-  
   names = c("Lung","Brain")
   print(ff)
+  
   sc = sciClone(vafs=list(v1,v2),sampleNames=names[1:2],maximumClusters=20)
   sc.plot2d(sc,paste(ff,"vaf.2d.pdf",sep="."))
 }
