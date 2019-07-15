@@ -1,6 +1,5 @@
 library("factoextra")
-
-data<-read.table("C:/Users/shg047/Documents/GitHub/LungBrainMetastasis/map2matrix.txt",head=T)
+data<-read.table("map2matrix.txt",head=T)
 head(data)
 name=gsub("X001","",colnames(data))
 for(i in 1:12){
