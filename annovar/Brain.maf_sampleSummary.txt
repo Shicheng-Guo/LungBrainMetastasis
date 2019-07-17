@@ -1,0 +1,13 @@
+Tumor_Sample_Barcode	Frame_Shift_Del	Frame_Shift_Ins	In_Frame_Del	In_Frame_Ins	Missense_Mutation	Nonsense_Mutation	Nonstop_Mutation	Splice_Site	total
+I_T2	13	6	7	1	134	12	1	6	180
+K_T2	12	1	8	0	87	10	0	4	122
+H_T2	1	1	1	2	96	11	0	2	114
+E_T2	25	0	10	0	58	3	0	2	98
+J_T2	8	1	4	0	62	6	0	2	83
+B_T2	28	2	24	0	18	2	0	1	75
+M_T2	14	8	1	1	37	3	1	2	67
+O_T2	8	2	6	1	40	5	0	0	62
+C_T2	3	1	0	0	40	4	0	2	50
+A_T2	0	0	0	0	43	1	0	2	46
+G_T2	2	0	2	0	20	2	0	0	26
+F_T2	2	1	1	1	17	0	0	1	23

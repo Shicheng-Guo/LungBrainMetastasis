@@ -44,7 +44,6 @@ pdf("Lung-S3.pdf")
 somaticInteractions(maf = laml, top = 25, pvalue = c(0.05, 0.1))
 dev.off()
 
-
 ### Brain
 annovar<-list.files(pattern="*_T2.hg19_multianno.txt")
 laml<-annovarToMaf(annovar=annovar, Center = NULL, refBuild = "hg19",
