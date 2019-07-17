@@ -30,9 +30,10 @@ annovar<-list.files(pattern="*_T1.hg19_multianno.txt")
 laml<-annovarToMaf(annovar=annovar, Center = NULL, refBuild = "hg19",
                    tsbCol = NULL, table = "refGene", basename = NULL, sep = "\t",
                    MAFobj = T, sampleAnno = NULL)
-Lung<-laml
-getSampleSummary(laml)
-getGeneSummary(laml)
+write.table(getSampleSummary(laml),file="Lung_Sample_MutationSummary.txt",sep="\t",col.names = NA,row.names = T,quote=F)
+write.table(getGeneSummary(laml),file="Lung_Gene_MutationSummary.txt",sep="\t",col.names = NA,row.names = T,quote=F)
+
+
 pdf("Lung-S1.pdf")
 plotmafSummary(maf = laml, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = T)
 dev.off()
@@ -48,7 +49,7 @@ dev.off()
 annovar<-list.files(pattern="*_T2.hg19_multianno.txt")
 laml<-annovarToMaf(annovar=annovar, Center = NULL, refBuild = "hg19",
                    tsbCol = NULL, table = "refGene", basename = NULL, sep = "\t",
-                   MAFobj = T, sampleAnno = NULL)
+                   MAFobj = T, sampleAnno = NULL,vc_nonSyn)
 Brain<-laml
 getSampleSummary(laml)
 getGeneSummary(laml)
@@ -63,15 +64,20 @@ somaticInteractions(maf = laml, top = 25, pvalue = c(0.05, 0.1))
 dev.off()
 
 ### Lung + Brain
+SO<-unlist(lapply(annovar,function(x) unlist(strsplit(x,"[.]"))[1]))
 annovar<-list.files(pattern="*.hg19_multianno.txt")
 laml<-annovarToMaf(annovar=annovar, Center = NULL, refBuild = "hg19",
                    tsbCol = NULL, table = "refGene", basename = NULL, sep = "\t",
                    MAFobj = T, sampleAnno = NULL)
 getSampleSummary(laml)
 getGeneSummary(laml)
+
 pdf("Lung_Brain-S1.pdf")
 plotmafSummary(maf = laml, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 dev.off()
+
+plotmafSummary
+
 pdf("Lung_Brain-S2.pdf")
 oncoplot(maf = laml, top = 50, sampleOrder=SO,removeNonMutated=F,draw_titv = TRUE,fontSize = 0.4,showTumorSampleBarcodes=T)
 dev.off()
