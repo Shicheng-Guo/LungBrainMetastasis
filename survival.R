@@ -1,6 +1,7 @@
-setwd("//mcrfnas2/bigdata/Genetic/Projects/shg047/project/LungBrainMetastasis")
-data<-read.xlsx("Result.xlsx",sheet=6,rowNames=T)
+install.packages("survminer")
+install.packages("survival")
 
+setwd("//mcrfnas2/bigdata/Genetic/Projects/shg047/project/LungBrainMetastasis")
 library("survival")
 library("survminer")
 data<-read.xlsx("Result.xlsx",sheet=1,rowNames=T)
@@ -10,7 +11,12 @@ Lmut<-mutation[,seq(1,26,by=2)]
 Bmut<-mutation[,seq(2,26,by=2)]
 
 head(Lmut)
+head(Bmut)
 
+Lmut<-Lmut[,-11]
+Bmut<-Bmut[,-11]
+
+# survival analysis based on lung mutation data
 P<-c()
 j<-c()
 for(i in 1:nrow(Lmut)){
@@ -23,6 +29,7 @@ for(i in 1:nrow(Lmut)){
   }
 }
 rownames(P)<-rownames(Lmut)[j]
+P<-P[order(P[,5],decreasing=F),]
 write.table(P,file="Lung.Mutation.Survival.txt",sep="\t",quote=F,col.names = NA,row.names = T)
 
 newp<-subset(P,P[,5]<0.05)
@@ -30,8 +37,8 @@ head(newp)
 dim(newp)
 
 for(i in 1:nrow(newp)){
-  print(i)
   gene=rownames(newp)[i]
+  print(gene)
   mut<-unlist(Lmut[match(gene,rownames(Lmut)),])
   mut[mut>1]<-1
   data$mut<-mut
@@ -41,11 +48,11 @@ for(i in 1:nrow(newp)){
                     palette = c("#E7B800","#2E9FDF"),
                     legend = "bottom",legend.title = gene,
                     legend.labs = c("wild","Mutation"))
-  ggsave(file = paste(gene,"Lung.pdf",sep="."), survp$plot)
+  ggsave(file = paste("./survival/",gene,".Lung.pdf",sep=""), survp$plot)
 }
 
 
-
+# survival analysis based on brian mutation data
 P<-c()
 j<-c()
 for(i in 1:nrow(Bmut)){
@@ -58,13 +65,13 @@ for(i in 1:nrow(Bmut)){
   }
 }
 rownames(P)<-rownames(Bmut)[j]
+P<-P[order(P[,5],decreasing=F),]
 write.table(P,file="Brain.Mutation.Survival.txt",sep="\t",quote=F,col.names = NA,row.names = T)
 head(P)
 
 newp<-subset(P,P[,5]<0.05)
 head(newp)
 dim(newp)
-
 for(i in 1:nrow(newp)){
   gene=rownames(newp)[i]
   print(gene)
@@ -77,5 +84,5 @@ for(i in 1:nrow(newp)){
                     palette = c("#E7B800","#2E9FDF"),
                     legend = "bottom",legend.title = gene,
                     legend.labs = c("wild","Mutation"))
-  ggsave(file = paste(gene,"Brain.pdf",sep="."), survp$plot)
+  ggsave(file = paste("./survival/",gene,".Brain.pdf",sep=""), survp$plot)
 }
