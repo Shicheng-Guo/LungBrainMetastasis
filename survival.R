@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 setwd("//mcrfnas2/bigdata/Genetic/Projects/shg047/project/LungBrainMetastasis")
 data<-read.xlsx("Result.xlsx",sheet=6,rowNames=T)
 
+=======
+>>>>>>> 133380ca3c1afef90aafffd78b5621a330ecf703
 library("survival")
 library("survminer")
 data<-read.xlsx("Result.xlsx",sheet=1,rowNames=T)
@@ -20,7 +23,11 @@ for(i in 1:nrow(Lmut)){
     fitv<-summary(fit)
     P<-rbind(P,fitv$coefficients)
     j<-c(j,i)
+<<<<<<< HEAD
   }
+=======
+}
+>>>>>>> 133380ca3c1afef90aafffd78b5621a330ecf703
 }
 rownames(P)<-rownames(Lmut)[j]
 write.table(P,file="Lung.Mutation.Survival.txt",sep="\t",quote=F,col.names = NA,row.names = T)
@@ -30,6 +37,7 @@ head(newp)
 dim(newp)
 
 for(i in 1:nrow(newp)){
+<<<<<<< HEAD
   print(i)
   gene=rownames(newp)[i]
   mut<-unlist(Lmut[match(gene,rownames(Lmut)),])
@@ -42,6 +50,20 @@ for(i in 1:nrow(newp)){
                     legend = "bottom",legend.title = gene,
                     legend.labs = c("wild","Mutation"))
   ggsave(file = paste(gene,"Lung.pdf",sep="."), survp$plot)
+=======
+print(i)
+gene=rownames(newp)[i]
+mut<-unlist(Lmut[match(gene,rownames(Lmut)),])
+mut[mut>1]<-1
+data$mut<-mut
+fit <- survfit(Surv(OS,status)~mut, data = data)
+survp<-ggsurvplot(fit, data = data,conf.int = F,pval = TRUE,
+           fun = "pct",risk.table = TRUE,size = 1,linetype = "strata",
+           palette = c("#E7B800","#2E9FDF"),
+           legend = "bottom",legend.title = gene,
+           legend.labs = c("wild","Mutation"))
+ggsave(file = paste(gene,"Lung.pdf",sep="."), survp$plot)
+>>>>>>> 133380ca3c1afef90aafffd78b5621a330ecf703
 }
 
 
@@ -78,4 +100,8 @@ for(i in 1:nrow(newp)){
                     legend = "bottom",legend.title = gene,
                     legend.labs = c("wild","Mutation"))
   ggsave(file = paste(gene,"Brain.pdf",sep="."), survp$plot)
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 133380ca3c1afef90aafffd78b5621a330ecf703
