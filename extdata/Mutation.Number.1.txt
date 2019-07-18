@@ -1,0 +1,4 @@
+ A B C E F G H I J K M O
+Lung 0 2 0 6 0 0 2 3 2 3 3 1
+LB 0 3 0 0 0 0 3 1 1 1 1 1
+Brain 0 2 1 8 0 0 0 3 5 7 1 0
