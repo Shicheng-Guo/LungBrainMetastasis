@@ -16,6 +16,8 @@ ci95<-function(x){
 }
 
 setwd("//mcrfnas2/bigdata/Genetic/Projects/shg047/project/LungBrainMetastasis")
+setwd("C:\\Users\\shg047\\Documents\\GitHub\\LungBrainMetastasis\\annovar")
+
 data<-read.xlsx("Result.xlsx",sheet=6,rowNames=T)
 ci95(data[,9])
 ci95(data[seq(1,26,by=2),9])
