@@ -1,7 +1,7 @@
 
 setwd("//mcrfnas2/bigdata/Genetic/Projects/shg047/project/LungBrainMetastasis/vaf")
 library("factoextra")
-data<-read.table("vafmatrix.txt",head=T,check.names = F)
+data<-read.table("map2matrix.txt",head=T,check.names = F)
 head(data)
 name=gsub("001","",colnames(data))
 for(i in 1:14){
