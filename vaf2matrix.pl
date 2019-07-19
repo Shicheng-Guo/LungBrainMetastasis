@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
-chdir "/home/shg047/work/wes/LungBrainMetastasis/vaf";
-my @file=glob("*vafs");
+chdir "/home/guosa/hpc/project/LungBrainMetastasis/vaf";
+my @file=glob("*vaf");
 
 my %data;
 my %gene;
