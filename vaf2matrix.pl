@@ -16,7 +16,7 @@ my @line=split/\s+/;
 my $pos="$line[0]:$line[1]";
 $pos{$pos}=$pos;
 $sam{$sam}=$sam;
-$data{$sam}{$pos}=$line[9];
+$data{$sam}{$pos}=$line[2];
 }
 }
 
