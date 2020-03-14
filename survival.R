@@ -86,3 +86,5 @@ for(i in 1:nrow(newp)){
                     legend.labs = c("wild","Mutation"))
   ggsave(file = paste("./survival/",gene,".Brain.pdf",sep=""), survp$plot)
 }
+
+
