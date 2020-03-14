@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
-chdir "/home/shg047/work/wes/LungBrainMetastasis/vaf";
-my @file=glob("*vafs");
+chdir "/home/guosa/hpc/project/LungBrainMetastasis/vaf";
+my @file=glob("*vaf");
 
 my %data;
 my %gene;
@@ -16,7 +16,7 @@ my @line=split/\s+/;
 my $pos="$line[0]:$line[1]";
 $pos{$pos}=$pos;
 $sam{$sam}=$sam;
-$data{$sam}{$pos}=$line[9];
+$data{$sam}{$pos}=$line[2];
 }
 }
 
